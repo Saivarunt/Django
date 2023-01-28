@@ -1,0 +1,43 @@
+localhost:8000- This is where your website would be hosted locally
+
+pwd- working directory
+ls-list files
+cd-change dir
+pip freeze-to list out all the installed packages in the virtual environment 
+
+python -m venv <name> # creates the virtual environment 
+
+source <name>/Scripts/activate #activates the virtual environment 
+
+deactivate # to deactivate the virtual environment
+
+#start project
+django-admin.py startproject <name>
+or
+django-admin startproject <name>
+
+python manage.py makemigrations # initial migration 
+python manage.py migrate
+ 
+cd myclub_website/
+python manage.py startapp <name> # add it to setting.py
+
+winpty python manage.py createsuperuser # to setup superuser
+
+'<website_name>.apps.WebsiteConfig'#settings.py add inside Installed_apps (example)
+
+create the urls.py file in new app and import views(from . import views)
+
+path('',include('website.urls'))# in the main urls.py add this
+
+python manage.py runserver # to run the server
+
+#make migrations when making changes to the models/database tables 
+python manage.py makemigrations
+python manage.py migrate
+
+
+html-url-views # a common structure to follow while building the website
+1) Create the HTML file.
+2) Create a url inside the url.py file.
+3) Create the view inside the views.py file and pass the request onto the website.
