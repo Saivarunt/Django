@@ -1,0 +1,79 @@
+{% extends 'events/base.html' %}
+
+
+{% block content %}
+<center>
+		<h1>Admin Dashboard</h1>
+		<br>
+<form action="" method="POST"> {%csrf_token%}
+
+
+
+<div class="card">
+  <div class="card-header">
+    Event - Venue - User Count
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Event count: {{event_count}}<br></h5>
+	<h5 class="card-title">Venue count: {{venue_count}}<br></h5>
+	<h5 class="card-title">User count: {{user_count}}<br></h5>
+  </div>
+</div>
+<br><br>
+
+
+<table class="table tabel-striped tabel-hover tabel-boredered">
+	<thead>
+		<tr>
+			<th scope="col">Venue Name</th>
+			<th scope="col">Events</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for venue in venue_list%}
+				<tr>
+					<td><a href="{%url 'show-venue' venue.id%}">{{venue}}</a></td>
+					<td> <a href="{%url 'venue-events' venue.id%}" class="btn btn-sm btn-secondary">List Events</a></td>
+				</tr>
+
+		{%endfor%}
+
+	</tbody>
+</table>
+
+
+
+	<h1>Event approval Form</h1><br><br>
+<table class="table tabel-striped tabel-hover tabel-boredered">
+	<thead>
+		<tr>
+			<th scope="col">Event Name</th>
+			<th scope="col">Approved</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%for event in event_list%}
+				<tr>
+					<td>{{event}}</td>
+					<td>{%if event.approved%}
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" checked="checked" value="{{event.id}}" name="boxes">
+					</div>
+					{%else%}
+						<div class="form-check">
+						<input class="form-check-input" type="checkbox"  value="{{event.id}}" name="boxes">
+					</div>
+					{%endif%}</td>
+				</tr>
+
+		{%endfor%}
+
+	</tbody>
+</table>
+
+<br>
+<button class="btn btn-secondary" type="submit">Update approval</button>
+
+</form>
+</center>
+{% endblock %}
