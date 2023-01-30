@@ -1,0 +1,8 @@
+#Follow the same steps as given in the requirements-cheatsheet under the event management website directory to create the virtual environment and set up your project
+
+For api requests you would just need to create an additional serilaizer.py file, which would be used in the views.py file to handle the requests.
+Use postman to send requests.
+
+pip install django
+pip install djangorestframework
+pip install requests # to consume the api request 
